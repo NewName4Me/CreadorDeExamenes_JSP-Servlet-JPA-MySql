@@ -1,7 +1,7 @@
 package logica;
 
 import java.util.List;
-import persistencias.ControladoraPersistencias;
+import persistencias.UsuarioJpaController;
 
 /**
  *
@@ -9,7 +9,7 @@ import persistencias.ControladoraPersistencias;
  */
 public class Controladora {
 
-    ControladoraPersistencias controlPersis = new ControladoraPersistencias();
+    UsuarioJpaController usuJpa = new UsuarioJpaController();
 
     /**
      * metodo que conecta con la controladora de persistencias para crearnos un
@@ -18,7 +18,7 @@ public class Controladora {
      * @param usuario
      */
     public void crearUsuario(Usuario usuario) {
-        controlPersis.crearUsuario(usuario);
+        usuJpa.create(usuario);
     }
 
     /**
@@ -28,6 +28,6 @@ public class Controladora {
      * @return
      */
     public List<Usuario> traerUsuario() {
-        return controlPersis.traerUsuario();
+        return usuJpa.findUsuarioEntities();
     }
 }

@@ -1,6 +1,6 @@
 logica\Usuario.class
-persistencias\ControladoraPersistencias.class
 persistencias\exceptions\IllegalOrphanException.class
+com\mycompany\proyectofinal\servlets\SvPreguntas.class
 persistencias\exceptions\PreexistingEntityException.class
 persistencias\exceptions\NonexistentEntityException.class
 persistencias\UsuarioJpaController.class

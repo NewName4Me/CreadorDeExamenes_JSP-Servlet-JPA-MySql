@@ -13,5 +13,17 @@
     </head>
     <body>
         <h1>Pagina de administrador!</h1>
+        <form action="SvPreguntas" method="POST">
+            <fieldset>
+                <legend><h3>Crear Preguntas</h3></legend>
+                <label>Enunciado: </label><input type="text" name="titulo" placeholder="..."><br>
+                <label>Opcion1: </label><input type="text" name="opcion1" placeholder="..."><br>
+                <label>Opcion2: </label><input type="text" name="opcion2" placeholder="..."><br>
+                <label>Opcion3: </label><input type="text" name="opcion3" placeholder="..."><br>
+                <label>Opcion4: </label><input type="text" name="opcion4" placeholder="..."><br>
+                <label>Cual es la correcta: </label><input type="number" name="correcta" placeholder="..."><br>
+                <button type="submit">Guardar Pregunta</button>
+            </fieldset>
+        </form>
     </body>
 </html>

@@ -14,13 +14,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import logica.Controladora;
+import logica.ControladoraUsuarios;
 import logica.Usuario;
 
 @WebServlet(name = "SvUsuarios", urlPatterns = {"/SvUsuarios"})
 public class SvUsuarios extends HttpServlet {
 
-    Controladora control = new Controladora();
+    ControladoraUsuarios control = new ControladoraUsuarios();
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

@@ -1,7 +1,7 @@
 package logica;
 
 import java.util.List;
-import persistencias.UsuarioJpaController;
+import JpaControladoras.UsuarioJpaController;
 
 /**
  *

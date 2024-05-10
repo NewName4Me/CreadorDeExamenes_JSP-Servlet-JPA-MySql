@@ -34,3 +34,5 @@ Index->Servlet->Controladora->UsuarioJpaController->BaseDeDatos
  + Distinguir antes de introducir un usuario con el metodo post si este existe o no para
 no tener alumnos repetidos aunque su id sea distinto, y diferencia si este es administrador o no
 segun cual sea se le redirije a una pagina u otra
+
++ Editar la pagina de "creaciones.jsp" donde el usuario ñade sus preguntas, luego crear la clase de "preguntas.java", añadirlo a las persistencias, y crear su JPA, su controlador y su servlet. por tanto ya se almacenan preguntas de forma correcta

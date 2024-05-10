@@ -8,7 +8,7 @@ import javax.persistence.Persistence;
 import javax.persistence.Query;
 import java.util.List;
 
-import logica.Usuario;
+import javabeans.Usuario;
 
 public class UsuarioJpaController implements Serializable {
 

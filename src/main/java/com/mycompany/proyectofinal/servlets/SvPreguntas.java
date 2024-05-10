@@ -2,19 +2,22 @@ package com.mycompany.proyectofinal.servlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import logica.ControladoraPreguntas;
-import logica.Preguntas;
+import javax.servlet.http.HttpSession;
+import javabeans.ControladoraPreguntas;
+import javabeans.Preguntas;
 
 @WebServlet(name = "SvPreguntas", urlPatterns = {"/SvPreguntas"})
 public class SvPreguntas extends HttpServlet {
 
     ControladoraPreguntas control = new ControladoraPreguntas();
-    
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -30,10 +33,19 @@ public class SvPreguntas extends HttpServlet {
             out.println("</html>");
         }
     }
-    
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
+        List<Preguntas> listaPreguntas = new ArrayList<>();
+
+        listaPreguntas = control.traerPreguntas();
+
+        HttpSession misesion = request.getSession();
+        misesion.setAttribute("listaPreguntas", listaPreguntas);
+
+        response.sendRedirect("creacionesMostrarPreguntas.jsp");
         processRequest(request, response);
     }
 
@@ -57,7 +69,8 @@ public class SvPreguntas extends HttpServlet {
         String opcion3 = request.getParameter("opcion3");
         String opcion4 = request.getParameter("opcion4");
         String correcta = request.getParameter("correcta");
-        
+
+        //crear pregunta y añadir los atributos
         Preguntas pregunta = new Preguntas();
         pregunta.setTitulo(titulo);
         pregunta.setOpcion1(opcion1);
@@ -65,15 +78,19 @@ public class SvPreguntas extends HttpServlet {
         pregunta.setOpcion3(opcion3);
         pregunta.setOpcion4(opcion4);
         pregunta.setCorrecta(Integer.parseInt(correcta));
-        
+
+        //crear pregunta
         control.crearPregunta(pregunta);
-        
+
+        //redijiri al usuario a la misma pagian para que no tenga que ir siempre a la pagina anterior
+        response.sendRedirect("creaciones.jsp");
+
         processRequest(request, response);
     }
-    
+
     @Override
     public String getServletInfo() {
         return "Short description";
     }
-    
+
 }

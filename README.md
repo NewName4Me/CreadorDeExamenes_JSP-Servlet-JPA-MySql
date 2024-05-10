@@ -36,3 +36,5 @@ no tener alumnos repetidos aunque su id sea distinto, y diferencia si este es ad
 segun cual sea se le redirije a una pagina u otra
 
 + Editar la pagina de "creaciones.jsp" donde el usuario ñade sus preguntas, luego crear la clase de "preguntas.java", añadirlo a las persistencias, y crear su JPA, su controlador y su servlet. por tanto ya se almacenan preguntas de forma correcta
+
++ Ahora puedo mostrar la lista de preguntas al pulsar el boton, usando el mismo metodo usando para mostrar la lista de alumnos, ahora tengo que añadir un boton rojo para eliminar una pregunta

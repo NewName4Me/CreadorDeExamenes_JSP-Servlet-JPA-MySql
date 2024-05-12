@@ -1,7 +1,8 @@
-package javabeans;
+package Controladores;
 
 import JpaControladoras.PreguntasJpaController;
 import java.util.List;
+import javabeans.Preguntas;
 
 /**
  *

@@ -1,7 +1,8 @@
-package javabeans;
+package Controladores;
 
 import java.util.List;
 import JpaControladoras.UsuarioJpaController;
+import javabeans.Usuario;
 
 /**
  *

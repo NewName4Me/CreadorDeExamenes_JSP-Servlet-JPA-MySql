@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import javabeans.ControladoraUsuarios;
+import Controladores.ControladoraUsuarios;
 import javabeans.Usuario;
 
 @WebServlet(name = "SvUsuarios", urlPatterns = {"/SvUsuarios"})

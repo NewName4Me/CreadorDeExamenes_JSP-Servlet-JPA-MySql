@@ -28,5 +28,13 @@
                 <button type="submit">Ver lista de preguntas</button>
             </form>
         </fieldset>
+        <fieldset>
+            <legend><h3>Crear Examen</h3></legend>
+            <form action="SvExamen" method="POST">
+                <label for="numeroDePreguntas">Numero de Preguntas: (inserte 0 para vaciar el examen)</label>
+                <input type="number" id="numeroDePreguntas" name="numeroDePreguntas" min="0" required>
+                <input type="submit" value="Crear examen">
+            </form>
+        </fieldset>
     </body>
 </html>

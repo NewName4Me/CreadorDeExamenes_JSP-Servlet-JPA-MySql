@@ -1,9 +1,9 @@
 javabeans\Preguntas.class
+com\mycompany\proyectofinal\servlets\SvExamen.class
 javabeans\Preguntas_.class
 persistencias\exceptions\IllegalOrphanException.class
 Controladores\ControladoraPreguntas.class
 javabeans\Usuario.class
-com\mycompany\proyectofinal\servlets\SvPreguntasEliminar.class
 com\mycompany\proyectofinal\servlets\SvPreguntas.class
 javabeans\Usuario_.class
 persistencias\exceptions\PreexistingEntityException.class

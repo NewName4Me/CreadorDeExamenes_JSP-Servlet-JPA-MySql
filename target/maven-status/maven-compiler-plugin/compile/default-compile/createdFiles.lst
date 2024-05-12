@@ -1,9 +1,9 @@
 javabeans\Preguntas.class
 javabeans\Preguntas_.class
 persistencias\exceptions\IllegalOrphanException.class
+Controladores\ControladoraPreguntas.class
 javabeans\Usuario.class
-javabeans\ControladoraPreguntas.class
-javabeans\ControladoraUsuarios.class
+com\mycompany\proyectofinal\servlets\SvPreguntasEliminar.class
 com\mycompany\proyectofinal\servlets\SvPreguntas.class
 javabeans\Usuario_.class
 persistencias\exceptions\PreexistingEntityException.class
@@ -11,3 +11,4 @@ JpaControladoras\PreguntasJpaController.class
 persistencias\exceptions\NonexistentEntityException.class
 JpaControladoras\UsuarioJpaController.class
 com\mycompany\proyectofinal\servlets\SvUsuarios.class
+Controladores\ControladoraUsuarios.class

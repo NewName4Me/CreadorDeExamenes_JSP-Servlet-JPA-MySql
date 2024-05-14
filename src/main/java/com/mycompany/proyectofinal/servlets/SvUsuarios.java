@@ -85,8 +85,13 @@ public class SvUsuarios extends HttpServlet {
         boolean usuarioExistente = false;
 
         for (Usuario user : usuariosExistentes) {
-            //compruebo que el usuario existe
-            if (user.getNombre().equals(nombre) && user.getApellido().equals(apellido) && user.getContrasenya().equals(contrasenya)) {
+            //booleanas de comprobacion
+            boolean isNombreCorrecto = user.getNombre().equals(nombre);
+            boolean isApellidoCorrecto = user.getApellido().equals(apellido);
+            boolean isContrasenyaCorrecto = user.getContrasenya().equals(contrasenya);
+
+            //compruebo que el usuario existe y la contraseña es correcta
+            if (isNombreCorrecto && isApellidoCorrecto && isContrasenyaCorrecto) {
                 usuarioExistente = true;
                 //si mi usuario es administrador lo redirijo a una pagina especial
                 if (user.isIsAdmin()) {

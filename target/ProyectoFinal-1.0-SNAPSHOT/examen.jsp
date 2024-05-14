@@ -23,6 +23,8 @@
     </head>
     <body>
         <h1>Preparate para el examen!</h1>
+        <p><%=session.getAttribute("momentoDeEntrada")%></p>
+        <p><%=session.getAttribute("nombreDeIngreso")%></p>
         <form action="SvExamenCorregido" method="POST">
             <%
                 List<Preguntas> preguntasDeExamenLista = (List<Preguntas>) session.getAttribute("preguntasDeExamen");

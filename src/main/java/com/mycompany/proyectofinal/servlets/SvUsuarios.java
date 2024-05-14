@@ -19,9 +19,9 @@ import javabeans.Usuario;
 
 @WebServlet(name = "SvUsuarios", urlPatterns = {"/SvUsuarios"})
 public class SvUsuarios extends HttpServlet {
-
+    
     ControladoraUsuarios control = new ControladoraUsuarios();
-
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -37,11 +37,11 @@ public class SvUsuarios extends HttpServlet {
             out.println("</html>");
         }
     }
-
+    
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        
         List<Usuario> listaUsuarios = new ArrayList<>();
 
         /*
@@ -55,9 +55,9 @@ public class SvUsuarios extends HttpServlet {
         //NOTA:la sesion se crea automatica cuando alguien entra a la web
         HttpSession misesion = request.getSession();
         misesion.setAttribute("listaUsuarios", listaUsuarios);
-
+        
         response.sendRedirect("indexMostrarUsuarios.jsp");
-
+        
         processRequest(request, response);
     }
 
@@ -83,7 +83,7 @@ public class SvUsuarios extends HttpServlet {
         //utilizar lo mismo que en el get para traer los usuarios y comprobar si existen y sin son administradores
         List<Usuario> usuariosExistentes = control.traerUsuario();
         boolean usuarioExistente = false;
-
+        
         for (Usuario user : usuariosExistentes) {
             //booleanas de comprobacion
             boolean isNombreCorrecto = user.getNombre().equals(nombre);
@@ -115,13 +115,16 @@ public class SvUsuarios extends HttpServlet {
             //llamo a la controladora que llama a la otra controladora para crear el usuario con el JPA
             control.crearUsuario(usuario);
         }
-
+        
+        HttpSession misesion = request.getSession();
+        misesion.setAttribute("nombreDeIngreso", nombre);
+        
         response.sendRedirect("examen.jsp");
     }
-
+    
     @Override
     public String getServletInfo() {
         return "Short description";
     }
-
+    
 }

@@ -26,8 +26,9 @@
         <form action="SvExamenCorregido" method="POST">
             <%
                 List<Preguntas> preguntasDeExamenLista = (List<Preguntas>) session.getAttribute("preguntasDeExamen");
-                for (int i = 0; i < preguntasDeExamenLista.size(); i++) {
-                    Preguntas question = preguntasDeExamenLista.get(i);
+                if (preguntasDeExamenLista != null && !preguntasDeExamenLista.isEmpty()) {
+                    for (int i = 0; i < preguntasDeExamenLista.size(); i++) {
+                        Preguntas question = preguntasDeExamenLista.get(i);
             %>
             <div class="pregunta">
                 <h2><%= "Pregunta " + (i + 1) + ": " + question.getTitulo()%></h2>
@@ -43,6 +44,10 @@
             %>
 
             <button type="submit">Corregir Examen</button>
+
+            <%
+                }
+            %>
         </form>
     </body>
 </html>

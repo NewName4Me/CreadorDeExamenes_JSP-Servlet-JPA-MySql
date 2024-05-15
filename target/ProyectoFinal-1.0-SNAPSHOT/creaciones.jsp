@@ -27,6 +27,7 @@
             <form action="SvPreguntas" method="GET">
                 <button type="submit">Ver lista de preguntas</button>
             </form>
+
         </fieldset>
         <fieldset>
             <legend><h3>Crear Examen</h3></legend>

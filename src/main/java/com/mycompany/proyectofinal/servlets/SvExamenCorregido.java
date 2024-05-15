@@ -45,6 +45,9 @@ public class SvExamenCorregido extends HttpServlet {
 
         for (Preguntas pregunta : preguntasDeExamenLista) {
             String preguntaEscogida = request.getParameter(String.valueOf(pregunta.getId()));
+            if (preguntaEscogida == null) {
+                preguntaEscogida = "-1";
+            }
             if (preguntaEscogida.equals(String.valueOf(pregunta.getCorrecta()))) {
                 score++;
             }

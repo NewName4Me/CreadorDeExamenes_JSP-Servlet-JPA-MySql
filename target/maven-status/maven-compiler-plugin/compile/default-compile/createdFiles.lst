@@ -4,6 +4,7 @@ javabeans\Preguntas_.class
 persistencias\exceptions\IllegalOrphanException.class
 Controladores\ControladoraPreguntas.class
 javabeans\Usuario.class
+GuardarInformacionEnTxt\GuardarPreguntas.class
 com\mycompany\proyectofinal\servlets\SvExamenCorregido.class
 com\mycompany\proyectofinal\servlets\SvPreguntas.class
 javabeans\Usuario_.class

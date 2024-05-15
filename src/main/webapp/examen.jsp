@@ -4,6 +4,7 @@
     Author     : torta
 --%>
 
+<%@page import="GuardarInformacionEnTxt.GuardarPreguntas"%>
 <%@page import="javabeans.Preguntas"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.List"%>
@@ -22,11 +23,13 @@
         </style>
     </head>
     <body>
-        <h1>Preparate para el examen!</h1>
+        <h1>Prepárate para el examen!</h1>
         <p><%=session.getAttribute("momentoDeEntrada")%></p>
         <p><%=session.getAttribute("nombreDeIngreso")%></p>
         <form action="SvExamenCorregido" method="POST">
             <%
+                int identificadorExamen = (int) Math.round(Math.random() * 100000);
+
                 List<Preguntas> preguntasDeExamenLista = (List<Preguntas>) session.getAttribute("preguntasDeExamen");
                 if (preguntasDeExamenLista != null && !preguntasDeExamenLista.isEmpty()) {
                     for (int i = 0; i < preguntasDeExamenLista.size(); i++) {
@@ -42,6 +45,7 @@
                 </ul>
             </div>
             <%
+                    // No guardes las preguntas en el archivo aquí, solo muestra la interfaz de usuario
                 }
             %>
 
@@ -51,5 +55,27 @@
                 }
             %>
         </form>
+
+        <form action="#" method="post">
+            <button type="submit" name="descargar" value="descargar">Descargar Examen</button>
+        </form>
+
+        <%
+            String descargar = request.getParameter("descargar");
+            if ("descargar".equals(descargar)) {
+                // Si se presiona el botón de descargar, guarda las preguntas en el archivo
+                if (preguntasDeExamenLista != null && !preguntasDeExamenLista.isEmpty()) {
+                    for (Preguntas question : preguntasDeExamenLista) {
+                        String preguntaParaTxt = String.format("%s \n A. %s \n B. %s \n C. %s \n D. %s \nANSWER: %s",
+                                question.getTitulo(), question.getOpcion1(), question.getOpcion2(), question.getOpcion3(),
+                                question.getOpcion4(), question.getCorrecta());
+                        GuardarPreguntas.guardarInformacionEnArchivo(preguntaParaTxt, identificadorExamen);
+                    }
+                    out.println("El examen ha sido descargado.");
+                } else {
+                    out.println("No hay preguntas para descargar.");
+                }
+            }
+        %>
     </body>
 </html>

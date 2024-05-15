@@ -12,12 +12,19 @@ import java.io.IOException;
 public class GuardarPreguntas {
 
     // directorio home del usuario
+<<<<<<< HEAD
     private static final String RUTA_GUARDADO_PREGUNTAS = System.getProperty("user.home") + "/misPreguntasGuardadas";
     private static String terminacionArchivo = ".txt";
 
     public static void guardarInformacionEnArchivo(String texto, int identificadorExamen) {
         String rutaDefinitiva = RUTA_GUARDADO_PREGUNTAS + identificadorExamen + terminacionArchivo;
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(rutaDefinitiva, true))) {
+=======
+    private static String rutaGuardadoPreguntas = System.getProperty("user.home") + "/misPreguntasGuardadas.txt";
+
+    public static void guardarInformacionEnArchivo(String texto) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(rutaGuardadoPreguntas, true))) {
+>>>>>>> 51c06c684a9ef7db08e86ee13f8232998f67ff1e
             writer.write(texto);
             writer.newLine(); //añado una linea nueva para evitar que se sobrelapen preguntas
         } catch (IOException e) {

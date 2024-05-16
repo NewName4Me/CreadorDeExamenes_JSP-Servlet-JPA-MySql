@@ -42,9 +42,11 @@ public class SvExamenCorregido extends HttpServlet {
 
         List<Preguntas> preguntasDeExamenLista = (List<Preguntas>) request.getSession().getAttribute("preguntasDeExamen");
         int score = 0;
+        int totalPreguntas = 0;
 
         for (Preguntas pregunta : preguntasDeExamenLista) {
             String preguntaEscogida = request.getParameter(String.valueOf(pregunta.getId()));
+            totalPreguntas++;
             if (preguntaEscogida == null) {
                 preguntaEscogida = "-1";
             }
@@ -55,6 +57,7 @@ public class SvExamenCorregido extends HttpServlet {
 
         HttpSession misesion = request.getSession();
         misesion.setAttribute("nota", score);
+        misesion.setAttribute("totalPreguntas", totalPreguntas);
 
         response.sendRedirect("notaObtenida.jsp");
 

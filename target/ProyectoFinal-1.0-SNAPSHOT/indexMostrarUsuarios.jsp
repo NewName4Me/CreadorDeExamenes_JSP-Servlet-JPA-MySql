@@ -1,9 +1,3 @@
-<%-- 
-    Document   : mostrarUsuarios
-    Created on : 9 may 2024, 16:29:21
-    Author     : torta
---%>
-
 <%@page import="java.util.List"%>
 <%@page import="javabeans.Usuario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -11,24 +5,43 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Lista de Alumnos</title>
         <style>
-            body{
-                margin:0;
+            body {
+                margin: 0;
                 padding: 0;
-                box-sizing: border-box;
+                font-family: Arial, sans-serif;
+                background-color: #333;
             }
-            header{
-                padding: 1rem;
-                background:black;
+            header {
+                background: black;
                 color: white;
+                padding: 10px 20px;
+                text-align: right;
             }
-            header *{
-                display: inline-block;
+            header p {
+                margin: 0;
+                display: inline;
             }
-            nav{
+            h1 {
                 text-align: center;
-                margin-right: 5rem;
+                color:white;
+                margin-top: 20px;
+            }
+            .alumnos-container {
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);
+                gap: 20px;
+                margin: 20px;
+            }
+            .alumno {
+                border: 2px solid #ccc;
+                border-radius: 10px;
+                padding: 20px;
+                background-color: #fff;
+            }
+            .alumno p {
+                margin: 0;
             }
         </style>
     </head>
@@ -40,18 +53,23 @@
             </nav>
         </header>
 
-        <h1>Lista de Alumnos!</h1>
+        <h1>Lista de Alumnos</h1>
 
-        <%
-            List<Usuario> listaUsuarios = (List) request.getSession().getAttribute("listaUsuarios");
-            int cont = 1;
-            for (Usuario usuario : listaUsuarios) {
-        %>
-        <p>Alumnos nº <%=cont%> <%=usuario.getNombre()%> <%=usuario.getApellido()%></p>
-        <p>-------------------------</p>
-        <%cont++;%>
-        <%
-            }
-        %>
+        <div class="alumnos-container">
+            <%
+                List<Usuario> listaUsuarios = (List<Usuario>) request.getSession().getAttribute("listaUsuarios");
+                int cont = 1;
+                for (Usuario usuario : listaUsuarios) {
+            %>
+            <div class="alumno">
+                <p>Alumno <%=cont%>:</p>
+                <p>Nombre: <%=usuario.getNombre()%></p>
+                <p>Apellido: <%=usuario.getApellido()%></p>
+            </div>
+            <%
+                    cont++;
+                }
+            %>
+        </div>
     </body>
 </html>

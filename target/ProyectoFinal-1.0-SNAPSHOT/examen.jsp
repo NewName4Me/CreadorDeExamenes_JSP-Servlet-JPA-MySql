@@ -20,12 +20,34 @@
                 border-radius: 16px;
                 padding: 1rem;
             }
+            body{
+                margin:0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+            header{
+                padding: 1rem;
+                background:<%=session.getAttribute("colorPreferido")%>;
+                color: white;
+            }
+            header *{
+                display: inline-block;
+            }
+            nav{
+                text-align: center;
+                margin-right: 5rem;
+            }
         </style>
     </head>
     <body>
+        <header>
+            <nav>
+                <p><%=session.getAttribute("momentoDeEntrada")%> - </p>
+                <p><%=session.getAttribute("nombreDeIngreso")%></p>
+            </nav>
+        </header>
         <h1>Prepárate para el examen!</h1>
-        <p><%=session.getAttribute("momentoDeEntrada")%></p>
-        <p><%=session.getAttribute("nombreDeIngreso")%></p>
+
         <form action="SvExamenCorregido" method="POST">
             <%
                 int identificadorExamen = (int) Math.round(Math.random() * 100000);

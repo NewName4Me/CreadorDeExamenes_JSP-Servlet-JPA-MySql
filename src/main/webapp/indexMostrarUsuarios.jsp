@@ -12,8 +12,34 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
+        <style>
+            body{
+                margin:0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+            header{
+                padding: 1rem;
+                background:black;
+                color: white;
+            }
+            header *{
+                display: inline-block;
+            }
+            nav{
+                text-align: center;
+                margin-right: 5rem;
+            }
+        </style>
     </head>
     <body>
+        <header>
+            <nav>
+                <p><%=session.getAttribute("momentoDeEntrada")%> - </p>
+                <p><%=session.getAttribute("nombreDeIngreso")%></p>
+            </nav>
+        </header>
+
         <h1>Lista de Alumnos!</h1>
 
         <%

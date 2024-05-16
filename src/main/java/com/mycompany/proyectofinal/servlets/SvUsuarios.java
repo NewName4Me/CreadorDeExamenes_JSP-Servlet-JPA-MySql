@@ -79,6 +79,7 @@ public class SvUsuarios extends HttpServlet {
         String nombre = request.getParameter("nombre");
         String apellido = request.getParameter("apellido");
         String contrasenya = request.getParameter("contrasenya");
+        String colorPreferido = request.getParameter("color");
 
         //utilizar lo mismo que en el get para traer los usuarios y comprobar si existen y sin son administradores
         List<Usuario> usuariosExistentes = control.traerUsuario();
@@ -86,6 +87,7 @@ public class SvUsuarios extends HttpServlet {
 
         HttpSession misesion = request.getSession();
         misesion.setAttribute("nombreDeIngreso", nombre);
+        misesion.setAttribute("colorPreferido", colorPreferido);
 
         for (Usuario user : usuariosExistentes) {
             //booleanas de comprobacion

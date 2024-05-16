@@ -1,38 +1,36 @@
-<%-- 
-    Document   : index
-    Created on : 9 may 2024, 16:26:55
-    Author     : torta
---%>
-
 <%@page import="java.time.LocalDateTime"%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Log In Hermos@</title>
         <style>
-            body{
-                margin:0;
+            body {
+                margin: 0;
                 padding: 0;
                 box-sizing: border-box;
                 background: darkslategrey;
             }
-            button{
+
+            button {
                 width: 100%;
                 height: 3rem;
                 font-size: 1rem;
             }
-            header{
+
+            header {
                 padding: 1rem;
                 background: black;
                 color: white;
             }
-            nav{
+
+            nav {
                 text-align: center;
                 margin-right: 5rem;
             }
-            main{
+
+            main {
                 border: 3px solid black;
                 border-radius: 8px;
                 width: fit-content;
@@ -46,24 +44,31 @@
                 font-size: 1.2rem;
                 box-shadow: -10px 10px 10px 0px violet;
             }
-            input{
+
+            input {
                 width: 100%;
                 padding: 5px;
             }
-            img:last-child{
+
+            img:last-child {
                 position: absolute;
                 top: 0;
-                right:0;
+                right: 0;
                 height: 100vh;
                 width: 45vw;
                 border-left: 4px solid black;
+            }
+
+            .error-message {
+                color: red;
+                font-size: 0.8rem;
             }
         </style>
     </head>
     <body>
         <header>
             <nav>
-                Hora de Entrada: 
+                Hora de Entrada:
                 <%
                     LocalDateTime miLocalDateTime = LocalDateTime.now();
                     int hora = miLocalDateTime.getHour();
@@ -77,10 +82,21 @@
             </nav>
         </header>
         <main>
+            <%-- Mostrar mensaje de error si la contraseña es incorrecta --%>
+            <%
+                String error = (String) session.getAttribute("error");
+                // Eliminar la variable de sesión después de usarla para que no se muestre en futuras visitas
+                session.removeAttribute("error");
+                if (error != null && error.equals("contraseñaIncorrecta")) {
+            %>
+            <p class="error-message">Contraseña incorrecta. Por favor, intenta de nuevo.</p>
+            <%
+                }
+            %>
             <section>
                 <h1>Listo para el Examen?</h1>
                 <form action="SvUsuarios" method="POST">
-                    <label>Nombre: </label><input type="text" name="nombre" placeholder="..."required><br>
+                    <label>Nombre: </label><input type="text" name="nombre" placeholder="..." required><br>
                     <label>Apellido: </label><input type="text" name="apellido" placeholder="..." required><br>
                     <label>Contraseña: </label><input type="password" name="contrasenya" placeholder="..." required><br>
                     <label>Color preferido: </label><input type="color" name="color" required><br><br>

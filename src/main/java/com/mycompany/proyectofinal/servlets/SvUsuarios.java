@@ -75,53 +75,66 @@ public class SvUsuarios extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        //tomar los parametros enviados por el formualrio
+        // Tomar los parámetros enviados por el formulario
         String nombre = request.getParameter("nombre");
         String apellido = request.getParameter("apellido");
         String contrasenya = request.getParameter("contrasenya");
         String colorPreferido = request.getParameter("color");
 
-        //utilizar lo mismo que en el get para traer los usuarios y comprobar si existen y sin son administradores
+        // Utilizar lo mismo que en el get para traer los usuarios y comprobar si existen y si son administradores
         List<Usuario> usuariosExistentes = control.traerUsuario();
         boolean usuarioExistente = false;
+        boolean contrasenyaCorrecta = false;
 
         HttpSession misesion = request.getSession();
         misesion.setAttribute("nombreDeIngreso", nombre);
         misesion.setAttribute("colorPreferido", colorPreferido);
 
         for (Usuario user : usuariosExistentes) {
-            //booleanas de comprobacion
+            // Comprueba si el nombre y el apellido coinciden
             boolean isNombreCorrecto = user.getNombre().equals(nombre);
             boolean isApellidoCorrecto = user.getApellido().equals(apellido);
-            boolean isContrasenyaCorrecto = user.getContrasenya().equals(contrasenya);
+            boolean isContrasenyaCorrecta = user.getContrasenya().equals(contrasenya);
 
-            //compruebo que el usuario existe y la contraseña es correcta
-            if (isNombreCorrecto && isApellidoCorrecto && isContrasenyaCorrecto) {
+            if (isNombreCorrecto && isApellidoCorrecto) {
                 usuarioExistente = true;
-                //si mi usuario es administrador lo redirijo a una pagina especial
-                if (user.isIsAdmin()) {
-                    response.sendRedirect("creaciones.jsp");
+                // Comprueba si la contraseña es correcta
+                if (isContrasenyaCorrecta) {
+                    contrasenyaCorrecta = true;
+                    // Redirige a creaciones.jsp si el usuario es administrador
+                    if (user.isIsAdmin()) {
+                        response.sendRedirect("creaciones.jsp");
+                        return;
+                    } else {
+                        // Redirige a otra página si el usuario no es administrador
+                        response.sendRedirect("examen.jsp");
+                        return;
+                    }
+                } else {
+                    // Contraseña incorrecta, envía el error y termina la ejecución
+                    misesion.setAttribute("error", "contraseñaIncorrecta");
+                    response.sendRedirect(response.encodeRedirectURL("index.jsp"));
                     return;
                 }
-                break; //si el usuario existe pero no es administrador no hace falta que comprobemos nada mas
             }
         }
 
-        //solo si mi usuario no existe lo creo, para no tener valores duplicados
+        // Si el usuario no existe, lo crea
         if (!usuarioExistente) {
-            //crear un usuario
-            Usuario usuario = new Usuario();
-            //darle parametros a ese usuario
-            usuario.setNombre(nombre);
-            usuario.setApellido(apellido);
-            usuario.setContrasenya(contrasenya);
-            usuario.setIsAdmin(false); //la unica forma de ser administrador es darte el rol desde la base de datos
+            // Crear un nuevo usuario
+            Usuario nuevoUsuario = new Usuario();
+            nuevoUsuario.setNombre(nombre);
+            nuevoUsuario.setApellido(apellido);
+            nuevoUsuario.setContrasenya(contrasenya);
+            nuevoUsuario.setIsAdmin(false); // Aquí puedes ajustar si el nuevo usuario será administrador o no
 
-            //llamo a la controladora que llama a la otra controladora para crear el usuario con el JPA
-            control.crearUsuario(usuario);
+            // Guardar el nuevo usuario en la base de datos
+            control.crearUsuario(nuevoUsuario);
+
+            // Redirige a examen.jsp después de crear el usuario, ya que no es un administrador
+            response.sendRedirect("examen.jsp");
+            return;
         }
-
-        response.sendRedirect("examen.jsp");
     }
 
     @Override

@@ -20,13 +20,15 @@
             List<Preguntas> listaPreguntas = (List) request.getSession().getAttribute("listaPreguntas");
             for (Preguntas pregunta : listaPreguntas) {
         %>
-        <form action="eliminarPregunta" method="POST">
+        <form action="SveliminarPregunta" method="POST">
+            <input type="hidden" name="preguntaId" value="<%=pregunta.getId()%>">
             <%=pregunta.getTitulo()%><br>
             <%=pregunta.getOpcion1()%><br>
             <%=pregunta.getOpcion2()%><br>
             <%=pregunta.getOpcion3()%><br>
             <%=pregunta.getOpcion4()%><br>
             <%=pregunta.getCorrecta()%><br>
+            <button type="submit">Borrar Pregunta</button>
         </form>
         <p>--------------------</p>
         <%

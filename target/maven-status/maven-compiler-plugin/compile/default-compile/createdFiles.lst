@@ -6,6 +6,7 @@ Controladores\ControladoraPreguntas.class
 javabeans\Usuario.class
 GuardarInformacionEnTxt\GuardarPreguntas.class
 com\mycompany\proyectofinal\servlets\SvExamenCorregido.class
+com\mycompany\proyectofinal\servlets\SveliminarPregunta.class
 com\mycompany\proyectofinal\servlets\SvPreguntas.class
 javabeans\Usuario_.class
 persistencias\exceptions\PreexistingEntityException.class

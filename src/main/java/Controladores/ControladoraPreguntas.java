@@ -9,7 +9,7 @@ import javabeans.Preguntas;
  * @author torta
  */
 public class ControladoraPreguntas {
-
+    
     PreguntasJpaController preJpa = new PreguntasJpaController();
 
     /**
@@ -29,5 +29,9 @@ public class ControladoraPreguntas {
      */
     public List<Preguntas> traerPreguntas() {
         return preJpa.findPreguntasEntities();
+    }
+    
+    public void eliminarPregunta(int id) {
+        preJpa.destroy(id);
     }
 }

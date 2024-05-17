@@ -49,6 +49,12 @@
         </style>
     </head>
     <body>
+        <%
+            HttpSession misesion = request.getSession();
+            if (misesion.getAttribute("esAdmin") == null) {
+                response.sendRedirect("creaciones.jsp");
+            }
+        %>
         <div class="container">
             <h1>Lista de Preguntas</h1>
             <%

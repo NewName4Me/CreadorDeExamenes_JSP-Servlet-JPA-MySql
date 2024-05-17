@@ -61,6 +61,12 @@
         </style>
     </head>
     <body>
+        <%
+            HttpSession misesion = request.getSession();
+            if (misesion.getAttribute("esAdmin") == null) {
+                response.sendRedirect("creaciones.jsp");
+            }
+        %>
         <div class="container">
             <h1>Página de Administrador</h1>
             <fieldset>

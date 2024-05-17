@@ -108,9 +108,11 @@ public class SvUsuarios extends HttpServlet {
                     // Reset the incorrect attempts counter on successful login
                     misesion.setAttribute("intentosFallidos", 0);
                     if (user.isIsAdmin()) {
+                        misesion.setAttribute("esAdmin", true);
                         response.sendRedirect("creaciones.jsp");
                         return;
                     } else {
+                        misesion.setAttribute("esAdmin", null);
                         response.sendRedirect("examen.jsp");
                         return;
                     }
@@ -124,7 +126,7 @@ public class SvUsuarios extends HttpServlet {
                     } else {
                         // Contraseña incorrecta, envía el error y termina la ejecución
                         misesion.setAttribute("error", "contraseñaIncorrecta");
-                        response.sendRedirect(response.encodeRedirectURL("index.jsp"));
+                        response.sendRedirect("index.jsp");
                         return;
                     }
                 }

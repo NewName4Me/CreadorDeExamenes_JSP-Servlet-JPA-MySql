@@ -54,3 +54,8 @@ para ver si puedes entrar, y si no coincide la contraseña manda un mensaje de e
 
 + Prevengo que me introduzcan un numero de preguntas mayor como examen a  las
 que tenemos en la base de datos y mando un mensaje de error a mi usuario
+
++ Utilizando variables de sesion compruebo si el usuario ingresado tiene
+el campo de admin, si no es asi, le impido que enntre a las paginas 
+privadas de admin, ya solo me falta mejorar el mensaje de salida al 
+descargar el examen

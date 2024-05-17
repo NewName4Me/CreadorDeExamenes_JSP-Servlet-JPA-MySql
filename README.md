@@ -51,3 +51,6 @@ utilizando el formato de  mostrar respuestas AIKON
 para ver si puedes entrar, y si no coincide la contraseña manda un mensaje de error, no hay limite de intento (por ahora)
 
 + Empezar a meter estilos varios, bastante irrelevante para la documentación
+
++ Prevengo que me introduzcan un numero de preguntas mayor como examen a  las
+que tenemos en la base de datos y mando un mensaje de error a mi usuario

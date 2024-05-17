@@ -12,44 +12,36 @@
                 box-sizing: border-box;
                 background: darkslategrey;
             }
-
             button {
                 width: 100%;
                 height: 3rem;
                 font-size: 1rem;
             }
-
             header {
                 padding: 1rem;
                 background: black;
                 color: white;
             }
-
             nav {
                 text-align: center;
                 margin-right: 5rem;
             }
-
             main {
                 border: 3px solid black;
                 border-radius: 8px;
                 width: fit-content;
                 padding: 1rem;
                 background: lightslategray;
-
                 position: absolute;
                 top: 12%;
                 margin-left: 12rem;
-
                 font-size: 1.2rem;
                 box-shadow: -10px 10px 10px 0px violet;
             }
-
             input {
                 width: 100%;
                 padding: 5px;
             }
-
             img:last-child {
                 position: absolute;
                 top: 0;
@@ -58,7 +50,6 @@
                 width: 45vw;
                 border-left: 4px solid black;
             }
-
             .error-message {
                 color: red;
                 font-size: 0.8rem;
@@ -85,12 +76,14 @@
             <%-- Mostrar mensaje de error si la contraseña es incorrecta --%>
             <%
                 String error = (String) session.getAttribute("error");
+                Integer intentos = (Integer) session.getAttribute("intentos");
+                if (intentos == null) {
+                    intentos = 0;
+                }
                 // Eliminar la variable de sesión después de usarla para que no se muestre en futuras visitas
                 session.removeAttribute("error");
                 if (error != null && error.equals("contraseñaIncorrecta")) {
-            %>
-            <p class="error-message">Contraseña incorrecta. Por favor, intenta de nuevo.</p>
-            <%
+                    out.print("<p class='error-message'>Contraseña incorrecta. Por favor, intenta de nuevo.</p>");
                 }
             %>
             <section>

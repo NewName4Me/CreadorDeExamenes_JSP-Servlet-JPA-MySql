@@ -90,31 +90,43 @@ public class SvUsuarios extends HttpServlet {
         misesion.setAttribute("nombreDeIngreso", nombre);
         misesion.setAttribute("colorPreferido", colorPreferido);
 
+        // Obtener el contador de intentos fallidos de la sesión
+        Integer intentosFallidos = (Integer) misesion.getAttribute("intentosFallidos");
+        if (intentosFallidos == null) {
+            intentosFallidos = 0; // Inicializar el contador si no existe
+        }
+
         for (Usuario user : usuariosExistentes) {
-            // Comprueba si el nombre y el apellido coinciden
             boolean isNombreCorrecto = user.getNombre().equals(nombre);
             boolean isApellidoCorrecto = user.getApellido().equals(apellido);
             boolean isContrasenyaCorrecta = user.getContrasenya().equals(contrasenya);
 
             if (isNombreCorrecto && isApellidoCorrecto) {
                 usuarioExistente = true;
-                // Comprueba si la contraseña es correcta
                 if (isContrasenyaCorrecta) {
                     contrasenyaCorrecta = true;
-                    // Redirige a creaciones.jsp si el usuario es administrador
+                    // Reset the incorrect attempts counter on successful login
+                    misesion.setAttribute("intentosFallidos", 0);
                     if (user.isIsAdmin()) {
                         response.sendRedirect("creaciones.jsp");
                         return;
                     } else {
-                        // Redirige a otra página si el usuario no es administrador
                         response.sendRedirect("examen.jsp");
                         return;
                     }
                 } else {
-                    // Contraseña incorrecta, envía el error y termina la ejecución
-                    misesion.setAttribute("error", "contraseñaIncorrecta");
-                    response.sendRedirect(response.encodeRedirectURL("index.jsp"));
-                    return;
+                    // Incrementar el contador de intentos fallidos
+                    intentosFallidos++;
+                    misesion.setAttribute("intentosFallidos", intentosFallidos);
+                    if (intentosFallidos >= 3) {
+                        response.sendRedirect("basura.jsp");
+                        return;
+                    } else {
+                        // Contraseña incorrecta, envía el error y termina la ejecución
+                        misesion.setAttribute("error", "contraseñaIncorrecta");
+                        response.sendRedirect(response.encodeRedirectURL("index.jsp"));
+                        return;
+                    }
                 }
             }
         }
@@ -130,6 +142,9 @@ public class SvUsuarios extends HttpServlet {
 
             // Guardar el nuevo usuario en la base de datos
             control.crearUsuario(nuevoUsuario);
+
+            // Reset the incorrect attempts counter on successful creation
+            misesion.setAttribute("intentosFallidos", 0);
 
             // Redirige a examen.jsp después de crear el usuario, ya que no es un administrador
             response.sendRedirect("examen.jsp");

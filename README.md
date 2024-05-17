@@ -40,3 +40,14 @@ segun cual sea se le redirije a una pagina u otra
 + Ahora puedo mostrar la lista de preguntas al pulsar el boton, usando el mismo metodo usando para mostrar la lista de alumnos, ahora tengo que añadir un boton rojo para eliminar una pregunta
 
 + Añado el boton para mostrar el examen y ademas de eso en propio examen se puede corregir, el orden de las preguntas es aleatorio, y utilizo para todo esto dos servlets nuevos además de eso gran parte de la información se guarda de forma temporal de manera lógica, al igual que en el apartado de mostrar ususario y preguntas
+
++ Añadir el boton de correccion del examen donde para comproobarlo compruebo si el value puesto en cada radio corresponde
+con el id que tiene asignado cada pregunta de manera unica
+
++ Opcion de descarga del examen, le doy a cada examen un id aleatorio unico para prevenir examenes con id repetidos
+utilizando el formato de  mostrar respuestas AIKON
+
++ Corregir login de usuarios , ahora si pones un usuario y contraseña correcto comprueba que eres o no aadministrador,
+para ver si puedes entrar, y si no coincide la contraseña manda un mensaje de error, no hay limite de intento (por ahora)
+
++ Empezar a meter estilos varios, bastante irrelevante para la documentación

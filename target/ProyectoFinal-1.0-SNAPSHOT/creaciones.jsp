@@ -87,6 +87,12 @@
             <fieldset>
                 <legend>Crear Examen</legend>
                 <form action="SvExamen" method="POST">
+                    <%
+                        if (session.getAttribute("preguntasInsuficientes") != null) {
+                            out.print("<p>Preguntas Insuficientes Para la Longitud de tu examen</p>");
+                            session.removeAttribute("preguntasInsuficientes");
+                        }
+                    %>
                     <label for="numeroDePreguntas">Número de Preguntas:</label>
                     <input type="number" id="numeroDePreguntas" name="numeroDePreguntas" min="0" placeholder="Introduce el número de preguntas" required>
                     <button type="submit">Crear Examen</button>

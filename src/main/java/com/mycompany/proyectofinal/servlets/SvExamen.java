@@ -47,6 +47,14 @@ public class SvExamen extends HttpServlet {
         int numeroDePreguntas = Integer.parseInt(request.getParameter("numeroDePreguntas"));
 
         List<Preguntas> todasLasPreguntas = control.traerPreguntas();
+
+        //prevenimos que nos introduzcan un numero mayor de preguntas que las que tenemso
+        if (numeroDePreguntas > todasLasPreguntas.size()) {
+            response.sendRedirect("creaciones.jsp");
+            HttpSession misesion = request.getSession();
+            misesion.setAttribute("preguntasInsuficientes", todasLasPreguntas.size());
+            return;
+        }
         Collections.shuffle(todasLasPreguntas);
 
         List<Preguntas> preguntasDeExamen = todasLasPreguntas.subList(0, numeroDePreguntas);

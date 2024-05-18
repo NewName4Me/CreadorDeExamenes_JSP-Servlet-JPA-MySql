@@ -52,7 +52,8 @@
         <%
             HttpSession misesion = request.getSession();
             if (misesion.getAttribute("esAdmin") == null) {
-                response.sendRedirect("creaciones.jsp");
+                response.sendRedirect("index.jsp");
+                return;
             }
         %>
         <div class="container">

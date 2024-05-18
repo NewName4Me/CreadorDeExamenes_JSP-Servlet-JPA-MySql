@@ -80,6 +80,15 @@
             .boton:hover {
                 background-color: #0056b3;
             }
+            form + p{
+                border:3px solid black;
+                position:absolute;
+                top:50%;
+                left:50%;
+                transform: translate(-50%,-50%);
+                padding:1rem 2rem;
+                background:grey;
+            }
         </style>
     </head>
     <body>
@@ -135,9 +144,9 @@
                                     question.getOpcion4(), question.getCorrecta());
                             GuardarPreguntas.guardarInformacionEnArchivo(preguntaParaTxt, identificadorExamen);
                         }
-                        out.println("El examen ha sido descargado.");
+                        out.println("<p>El examen ha sido descargado en tu carpeta de Usuario.</p>");
                     } else {
-                        out.println("No hay preguntas para descargar.");
+                        out.println("<p>No hay preguntas para descargar.</p>");
                     }
                 }
             %>

@@ -59,3 +59,7 @@ que tenemos en la base de datos y mando un mensaje de error a mi usuario
 el campo de admin, si no es asi, le impido que enntre a las paginas 
 privadas de admin, ya solo me falta mejorar el mensaje de salida al 
 descargar el examen
+
++ Correcciones simples de mostrar mejor el mensaje de descarga un par de estilos y listo, solo queda desplegar el 
+proyecto, aun tiene algunos errores menores como que inserten texto en un campo que no deben o algo así
+pero en general el proyecto esta muy bien, mucho mejor de lo que me esperaba

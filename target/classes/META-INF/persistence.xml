@@ -6,10 +6,10 @@
         <class>javabeans.Usuario</class>
         <exclude-unlisted-classes>false</exclude-unlisted-classes>
         <properties>
-            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://lechugas.ddns.net:3306/erik?zeroDateTimeBehavior=CONVERT_TO_NULL"/>
-            <property name="javax.persistence.jdbc.user" value="erik"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/user?zeroDateTimeBehavior=CONVERT_TO_NULL"/>
+            <property name="javax.persistence.jdbc.user" value="youruser"/>
             <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
-            <property name="javax.persistence.jdbc.password" value="usuario"/>
+            <property name="javax.persistence.jdbc.password" value="yourpassword"/>
             <property name="javax.persistence.schema-generation.database.action" value="create"/>
         </properties>
     </persistence-unit>

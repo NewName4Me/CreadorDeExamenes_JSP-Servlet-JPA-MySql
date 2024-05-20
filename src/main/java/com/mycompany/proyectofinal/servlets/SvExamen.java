@@ -40,6 +40,15 @@ public class SvExamen extends HttpServlet {
         processRequest(request, response);
     }
 
+    /**
+     * metodo encargado de crear el examen, toma el numero de preguntas enviado
+     * en el formulario y lo crea escogiendo las pregunttas de forma aleatorio
+     *
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

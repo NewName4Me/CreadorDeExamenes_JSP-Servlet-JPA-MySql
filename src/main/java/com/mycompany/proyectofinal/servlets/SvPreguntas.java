@@ -35,6 +35,14 @@ public class SvPreguntas extends HttpServlet {
         }
     }
 
+    /**
+     * metodo que nos muestra la lista de preguntas de nuestra base d edatos
+     *
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

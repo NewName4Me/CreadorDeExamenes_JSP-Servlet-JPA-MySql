@@ -35,6 +35,15 @@ public class SveliminarPregunta extends HttpServlet {
         processRequest(request, response);
     }
 
+    /**
+     * metodo encargado de eliminar las preguntas y mostrarnos la lista
+     * actualizada al momento de eliminarla
+     *
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

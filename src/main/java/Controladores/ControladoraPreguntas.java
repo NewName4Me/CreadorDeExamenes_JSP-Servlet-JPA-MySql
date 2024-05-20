@@ -9,7 +9,7 @@ import javabeans.Preguntas;
  * @author torta
  */
 public class ControladoraPreguntas {
-    
+
     PreguntasJpaController preJpa = new PreguntasJpaController();
 
     /**
@@ -30,7 +30,12 @@ public class ControladoraPreguntas {
     public List<Preguntas> traerPreguntas() {
         return preJpa.findPreguntasEntities();
     }
-    
+
+    /**
+     * metodo encargado de eliminar las preguntas de nuestra base de datos
+     *
+     * @param id
+     */
     public void eliminarPregunta(int id) {
         preJpa.destroy(id);
     }

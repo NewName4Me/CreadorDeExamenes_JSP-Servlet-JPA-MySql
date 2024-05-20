@@ -73,8 +73,8 @@
             </nav>
         </header>
         <main>
-            <%-- Mostrar mensaje de error si la contraseña es incorrecta --%>
             <%
+                //esto es para saber si ha fallado tres veces la contraseña
                 String error = (String) session.getAttribute("error");
                 Integer intentos = (Integer) session.getAttribute("intentos");
                 if (intentos == null) {

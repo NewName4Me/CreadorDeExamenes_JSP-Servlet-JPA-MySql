@@ -15,6 +15,12 @@ public class GuardarPreguntas {
     private static final String RUTA_GUARDADO_PREGUNTAS = System.getProperty("user.home") + "/misPreguntasGuardadas";
     private static String terminacionArchivo = ".txt";
 
+    /**
+     * metodo encargado de guardar un examen creado con un identificador unico
+     *
+     * @param texto
+     * @param identificadorExamen
+     */
     public static void guardarInformacionEnArchivo(String texto, int identificadorExamen) {
         String rutaDefinitiva = RUTA_GUARDADO_PREGUNTAS + identificadorExamen + terminacionArchivo;
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(rutaDefinitiva, true))) {

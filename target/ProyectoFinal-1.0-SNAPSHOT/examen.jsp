@@ -103,8 +103,10 @@
 
             <form action="SvExamenCorregido" method="POST">
                 <%
+                    //id para el momemto de guardar el examen
                     int identificadorExamen = (int) Math.round(Math.random() * 100000);
 
+                    //mostrar lista de preguntas
                     List<Preguntas> preguntasDeExamenLista = (List<Preguntas>) session.getAttribute("preguntasDeExamen");
                     if (preguntasDeExamenLista != null && !preguntasDeExamenLista.isEmpty()) {
                         for (int i = 0; i < preguntasDeExamenLista.size(); i++) {
@@ -135,6 +137,7 @@
             </form>
 
             <%
+                //descargo el examen con el formato aikan de jose angel
                 String descargar = request.getParameter("descargar");
                 if ("descargar".equals(descargar)) {
                     if (preguntasDeExamenLista != null && !preguntasDeExamenLista.isEmpty()) {

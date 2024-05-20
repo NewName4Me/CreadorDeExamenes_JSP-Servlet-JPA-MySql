@@ -38,6 +38,16 @@ public class SvUsuarios extends HttpServlet {
         }
     }
 
+    /**
+     * metodo que se activa cuando pulsamos "mostrar lista de alumnos" toma a
+     * todos los alumnos de la base de datos y se lo envia a
+     * indeMostrarUsuarios.jsp
+     *
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

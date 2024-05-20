@@ -95,6 +95,7 @@
                 <legend>Crear Examen</legend>
                 <form action="SvExamen" method="POST">
                     <%
+                        //prevengo que creen un examen de 3 preguntas si tenemos solo 2 por ejemplo
                         if (session.getAttribute("preguntasInsuficientes") != null) {
                             out.print("<p>Preguntas Insuficientes Para la Longitud de tu examen</p>");
                             session.removeAttribute("preguntasInsuficientes");

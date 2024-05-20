@@ -36,6 +36,14 @@ public class SvExamenCorregido extends HttpServlet {
         processRequest(request, response);
     }
 
+    /**
+     * metodo que corrige nuestro examen
+     *
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -44,9 +52,14 @@ public class SvExamenCorregido extends HttpServlet {
         int score = 0;
         int totalPreguntas = 0;
 
+        /**
+         * recorro cada pregunta y compruebo si es la correcta, si lo es sumo un
+         * punto
+         */
         for (Preguntas pregunta : preguntasDeExamenLista) {
             String preguntaEscogida = request.getParameter(String.valueOf(pregunta.getId()));
             totalPreguntas++;
+            //prevenir error de inserccion de pregunta vacia que se almacena por alguna motivo
             if (preguntaEscogida == null) {
                 preguntaEscogida = "-1";
             }

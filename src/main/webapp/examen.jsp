@@ -117,8 +117,11 @@
                     <ul>
                         <li><input type="radio" name="<%= question.getId()%>" value="1"><%= question.getOpcion1()%></li>
                         <li><input type="radio" name="<%= question.getId()%>" value="2"><%= question.getOpcion2()%></li>
-                        <li><input type="radio" name="<%= question.getId()%>" value="3"><%= question.getOpcion3()%></li>
+                        <!--para comprobar si la cadena esta vacia antes de insertarla-->
+                        <li><input type="radio" name="<%= question.getId()%>" value="3"><%= question.getOpcion4()%></li>
                         <li><input type="radio" name="<%= question.getId()%>" value="4"><%= question.getOpcion4()%></li>
+
+
                     </ul>
                 </div>
                 <%

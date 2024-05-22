@@ -80,9 +80,9 @@
                     <label for="opcion2">Opción 2:</label>
                     <input type="text" id="opcion2" name="opcion2" placeholder="Introduce la opción 2" required>
                     <label for="opcion3">Opción 3:</label>
-                    <input type="text" id="opcion3" name="opcion3" placeholder="Introduce la opción 3" required>
+                    <input type="text" id="opcion3" name="opcion3" placeholder="Introduce la opción 3">
                     <label for="opcion4">Opción 4:</label>
-                    <input type="text" id="opcion4" name="opcion4" placeholder="Introduce la opción 4" required>
+                    <input type="text" id="opcion4" name="opcion4" placeholder="Introduce la opción 4">
                     <label for="correcta">Respuesta correcta:</label>
                     <input type="number" id="correcta" name="correcta" placeholder="Introduce el número de la opción correcta" required>
                     <button type="submit">Guardar Pregunta</button>

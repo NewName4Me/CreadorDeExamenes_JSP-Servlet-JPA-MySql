@@ -3,7 +3,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Results of the Exam</title>
+        <title>Resultados del Examen</title>
         <style>
             body {
                 margin: 0;

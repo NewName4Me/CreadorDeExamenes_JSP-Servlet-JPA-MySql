@@ -68,7 +68,7 @@ public class SvExamen extends HttpServlet {
 
         List<Preguntas> preguntasDeExamen = todasLasPreguntas.subList(0, numeroDePreguntas);
 
-        // Store preguntasDeExamen in the session
+        // almaceno las preguntas en una variable de sesion
         HttpSession session = request.getSession();
         session.setAttribute("preguntasDeExamen", preguntasDeExamen);
 

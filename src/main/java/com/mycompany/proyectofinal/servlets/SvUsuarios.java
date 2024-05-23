@@ -115,7 +115,7 @@ public class SvUsuarios extends HttpServlet {
                 usuarioExistente = true;
                 if (isContrasenyaCorrecta) {
                     contrasenyaCorrecta = true;
-                    // Reset the incorrect attempts counter on successful login
+                    // resetear el contador de intentos incorrecto cuando acciertan
                     misesion.setAttribute("intentosFallidos", 0);
                     if (user.isIsAdmin()) {
                         misesion.setAttribute("esAdmin", true);
@@ -155,7 +155,7 @@ public class SvUsuarios extends HttpServlet {
             // Guardar el nuevo usuario en la base de datos
             control.crearUsuario(nuevoUsuario);
 
-            // Reset the incorrect attempts counter on successful creation
+            // seteo en numero de intento fallido a 0
             misesion.setAttribute("intentosFallidos", 0);
 
             // Redirige a examen.jsp después de crear el usuario, ya que no es un administrador

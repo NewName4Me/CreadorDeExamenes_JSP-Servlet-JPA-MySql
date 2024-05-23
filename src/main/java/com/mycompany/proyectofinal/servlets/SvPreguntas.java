@@ -91,9 +91,6 @@ public class SvPreguntas extends HttpServlet {
         //crear pregunta
         control.crearPregunta(pregunta);
 
-        String preguntaString = String.format("%s \n A.%s \n B.%s \n C.%s.\n D.%s \n ANSWER:%s",
-                titulo, opcion1, opcion2, opcion3, opcion4, correcta);
-
         //redijiri al usuario a la misma pagian para que no tenga que ir siempre a la pagina anterior
         response.sendRedirect("creaciones.jsp");
 
